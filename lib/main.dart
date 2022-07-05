@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:integrador/app/UI/Pages/home_page.dart';
-
+import 'package:integrador/app/UI/Pages/login.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -13,10 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Info Ruta v1',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home:  HomePage(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: 'login',
+      routes: {
+      'home': (BuildContext context) =>  HomePage(),
+      'login': (BuildContext context) =>  const LoginPage(),
+      }
     );
   }
 }
