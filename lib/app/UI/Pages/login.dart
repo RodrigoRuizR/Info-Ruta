@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/colors/colors.dart';
 
 
 import '../../../service/login_service.dart';
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor:Color.fromARGB(255, 0, 79, 183) ,
+      backgroundColor: ColorSelect.tema,
       appBar: AppBar(
         
         leading: IconButton(
@@ -28,13 +29,12 @@ class _LoginPageState extends State<LoginPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text('Info Ruta'),
-        iconTheme: const IconThemeData(color: Colors.blueAccent),
+        iconTheme: const IconThemeData(color: ColorSelect.tema),
         actions: [
           Container(
             padding: const EdgeInsets.only(left: 90),
             height: 60,
             width: 170,
-            //child: Image.asset('assets/images/splash.png'),
           )
         ],
         backgroundColor: Colors.blueAccent,
@@ -42,12 +42,8 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         
         margin: const EdgeInsets.only(left: 10),
-        // width: size.width,
-        // height: size.height,
         child: SingleChildScrollView(
           child: Column(
-            
-            //mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               SizedBox(
                 height: 400,
@@ -64,21 +60,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Container(
-                //color: Colors.white,
+                color: Colors.white,
                 
                 //width: double.infinity,
-                padding: EdgeInsets.only(top: 10,left: 10, right: 10),
+                margin: EdgeInsets.only(top: 10,left: 10, right: 10),
                 child: TextField(
                   
                   textAlign: TextAlign.left,
-                  style: const TextStyle(fontSize: 18, color: Colors.white),
+                  style: const TextStyle(fontSize: 18, color: Colors.black),
                   autofocus: true,
                   decoration: const InputDecoration(
-                    
-                    border: OutlineInputBorder(
-
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(color: Colors.white, width: 1)),
                     hintText: 'Dirección de correo',
                   ),
                   onChanged: (text) {
@@ -96,13 +87,17 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Container(
+                color: Colors.white,
                 margin: const EdgeInsets.only(top: 10, right: 10, left: 10),
                 child: TextField(
                   obscureText: mostrar,
                   textAlign: TextAlign.left,
                   style: const TextStyle(fontSize: 18),
                   autofocus: true,
-                  decoration: InputDecoration(
+                  decoration: 
+                  
+                  InputDecoration(
+                  
                     suffixIcon: IconButton(
                       icon:
                           Icon(mostrar ? Icons.visibility : Icons.visibility_off),
@@ -112,9 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                         });
                       },
                     ),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                        borderSide: BorderSide(color: Colors.black, width: 1)),
+
                     hintText: 'Contraseña',
                   ),
                   onChanged: (text) {
@@ -122,31 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
               ),
-             Padding(
-               padding: const EdgeInsets.only(right: 10),
-               child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children:  [
-                        TextButton(
-                          onPressed: (){
-                            Navigator.pushNamed(context, 'recuperar');
-                          },
-                          child: const Text(
-                            '¿Has olvidado tu contraseña? ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-             ),
-                  const Padding(padding: EdgeInsets.only(top:160)),
+                  //const Padding(padding: EdgeInsets.only(top:160)),
                   Container(
-                padding: const EdgeInsets.only(top: 90),
+                padding: const EdgeInsets.only(top: 20),
                 child: SizedBox(
                   width: size.width - 70,
                   height: 50,
@@ -168,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                                 print(value);
                                 if (value['status'] == 'success') {
                                   Navigator.pushReplacementNamed(
-                                      context, 'homepage');
+                                      context, 'home');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
@@ -180,10 +151,10 @@ class _LoginPageState extends State<LoginPage> {
                               });
                         }
                       },
-                      
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xFF1083E7),
+                          primary: ColorSelect.tema,
                           shape: RoundedRectangleBorder(
+                              //borderSide: const BorderSide(color: Colors.white, width: 0),
                               borderRadius: BorderRadius.circular(20)))),
                 ),
               ),
@@ -193,11 +164,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:  [
-                      
-                      
                       TextButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, 'registro');
+                          Navigator.pushNamed(context, 'register');
                         },
                         child: const Text(
                           'Regístrate',
@@ -205,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(256, 16, 131, 231),
+                            color: Colors.white,
                           ),
                         ),
                       )
