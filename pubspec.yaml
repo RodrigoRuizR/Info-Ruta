@@ -36,9 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_maps_flutter: ^2.1.8
   http: ^0.13.4
-  permission_handler: ^10.0.0 
-  trust_location: ^2.0.13
-  location_permissions: ^4.0.1
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +63,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
   - lib/app/assets/images/info.png
+  - lib/app/assets/images/conductor.png
+  - lib/app/assets/images/cond.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

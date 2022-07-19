@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:integrador/app/UI/Pages/location_provider.dart';
 import 'package:integrador/app/UI/widgets/drawer.dart';
+import 'package:location/location.dart';
 
-import 'package:location_permissions/location_permissions.dart';
-import 'package:trust_location/trust_location.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -14,19 +14,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
+  final _location = LocationProvider();
   final _initialCameraPosition = const CameraPosition(
     zoom: 15,
     target: LatLng(16.6180951,-93.0927738),
   );
+
+  @override
+  void initState() {
+    _location.getLocation();
+    print("este es un mensaje");
+    print(_location.locationData);
+    super.initState();
+    
+  }
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 79, 183),
       appBar: AppBar(
-        title: const Text("miguel "),
+        title: const Text("Rod "),
         backgroundColor: Color.fromARGB(255, 0, 79, 183),
         actions: [
           Padding(padding: EdgeInsets.all(10),
