@@ -1,32 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/retry.dart';
+import 'package:integrador/app/UI/Pages/home_controller.dart';
+import 'package:integrador/app/UI/Pages/location_provider.dart';
 import 'package:integrador/app/UI/widgets/drawer.dart';
-
-import 'package:location_permissions/location_permissions.dart';
-import 'package:trust_location/trust_location.dart';
-
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+import 'package:location/location.dart';
+import 'package:provider/provider.dart';
 
 
-  final _initialCameraPosition = const CameraPosition(
-    zoom: 15,
-    target: LatLng(16.6180951,-93.0927738),
-  );
+
+class HomePage extends StatelessWidget {
+  //final _location = LocationProvider();
+
+  const HomePage({Key? key}) : super(key: key);
+  //final _controller = HomeController();
+  
+
+  // @override
+  // void initState() {
+  //   _location.getLocation();
+  //   print("este es un mensaje");
+  //   print(_location.locationData);
+  //   //super.initState();
+    
+  // }
   @override
   Widget build(BuildContext context) {
+    
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
+    return ChangeNotifierProvider<HomeController>(
+      create: (_) {
+        final controller =  HomeController();
+        controller.onMarkerTap.listen((String id) {
+          print("estas en el $id");
+        });
+        return controller;
+      },
+    child: Scaffold(
       backgroundColor: Color.fromARGB(255, 0, 79, 183),
       appBar: AppBar(
-        title: const Text("miguel "),
+        //title: const Text("Rod "),
         backgroundColor: Color.fromARGB(255, 0, 79, 183),
         actions: [
           Padding(padding: EdgeInsets.all(10),
@@ -44,32 +58,34 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(
             width: size.width,
-
             child: IconButton(onPressed: (){
                 showSearch(context: context, delegate: Search());
-              }, icon: Icon(Icons.search)),
-            
+              }, icon: Icon(Icons.search)),     
             color: const Color(0XFF09BAA6),),          
             const Center(
             child: Padding(
-              padding: EdgeInsets.only(bottom: 200)),
-              
+              padding: EdgeInsets.only(bottom: 10)), 
           ),
           SizedBox(
-            
-
             width: 400,
-            height: 400,
-            child: GoogleMap(
-              initialCameraPosition: _initialCameraPosition,)),
+            height: 700,
+            child: Consumer<HomeController>(
+              builder: (_, controller, __ )=> GoogleMap(
+              onTap: controller.onTap ,
+              markers: controller.markers,
+              initialCameraPosition: controller.initialCameraPosition,),)
+            ),
         ],
       ),
-    );
+    ));
+    
   }
 }
+
+
 class Search extends SearchDelegate<String> {
   List moteles = [];
-  final recientes = ["rapidiin"];
+  final recientes = ["Up chiapas"];
 
 
   // final Stream<QuerySnapshot> _roomsS =
@@ -171,4 +187,5 @@ class Search extends SearchDelegate<String> {
     // TODO: implement buildSuggestions
     throw UnimplementedError();
   }
+
 }
