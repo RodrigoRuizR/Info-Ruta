@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Info Ruta v1',
       debugShowCheckedModeBanner: false,
-      initialRoute: 'transportista',
+      initialRoute: 'register',
       routes: {
       'map1': (BuildContext context) =>  const FirstPoint(),
       'map2': (BuildContext context) =>  const EndPoint (),
