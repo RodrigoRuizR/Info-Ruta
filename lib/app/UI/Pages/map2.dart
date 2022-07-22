@@ -15,7 +15,7 @@ class EndPoint extends StatelessWidget {
       create: (_){
         final controller =  HomeController();
         controller.onMarkerTap.listen((String id) {
-          print("Termina aqui $id");
+          print("Termina aqui por $id");
         });
         return controller;
       },
