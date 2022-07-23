@@ -26,7 +26,8 @@ Future<Map<String, dynamic>> login(String email, String password) async {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       Map<String, dynamic> responseMap = {
-        'status': data['status']
+        'status': data['status'],
+        'userType':data['userType']
       };
       return responseMap;
     } else {

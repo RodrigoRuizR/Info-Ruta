@@ -15,6 +15,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String? email = '';
+  int? userType = 0;
   String? password = '';
   bool mostrar = true;
   bool ver = false;
@@ -137,10 +138,19 @@ class _LoginPageState extends State<LoginPage> {
                           );
                         } else {
                           login(email!, password!).then((value) {
-                                print(value);
+                            print('value: '+value.toString());
+                            print('value: '+value['userType'].toString());
                                 if (value['status'] == 'success') {
-                                  Navigator.pushReplacementNamed(
-                                      context, Routes.Home);
+
+                                  if(value['userType'] == 1){
+                                    // print('entra a transportista');
+                                    Navigator.pushReplacementNamed(
+                                      context, 'transportista');
+                                  }else{
+                                    // print('entra a pasajero');
+                                    Navigator.pushReplacementNamed(
+                                      context, 'home');
+                                  }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
