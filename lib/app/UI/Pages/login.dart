@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/app/UI/Pages/colors/colors.dart';
 
 
@@ -140,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                             print('value: '+value.toString());
                             print('value: '+value['userType'].toString());
                                 if (value['status'] == 'success') {
+
                                   if(value['userType'] == 1){
                                     // print('entra a transportista');
                                     Navigator.pushReplacementNamed(
@@ -175,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                     children:  [
                       TextButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, 'register');
+                          Navigator.pushNamed(context, Routes.Register);
                         },
                         child: const Text(
                           'Regístrate',
