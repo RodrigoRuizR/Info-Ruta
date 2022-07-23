@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/app/UI/Pages/home_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -60,7 +61,7 @@ class FirstPoint extends StatelessWidget {
                           style: TextStyle(fontSize: 18),
                         ),
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, 'map2');
+                          Navigator.pushReplacementNamed(context, Routes.Map2);
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorSelect.tema,

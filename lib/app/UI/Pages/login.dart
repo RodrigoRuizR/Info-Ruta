@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/app/UI/Pages/colors/colors.dart';
 
 
@@ -139,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                 print(value);
                                 if (value['status'] == 'success') {
                                   Navigator.pushReplacementNamed(
-                                      context, 'home');
+                                      context, Routes.Home);
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
@@ -166,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                     children:  [
                       TextButton(
                         onPressed: (){
-                          Navigator.pushNamed(context, 'register');
+                          Navigator.pushNamed(context, Routes.Register);
                         },
                         child: const Text(
                           'Regístrate',

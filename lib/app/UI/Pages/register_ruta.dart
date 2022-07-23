@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Routes/routes.dart';
 import 'colors/colors.dart';
 
 class RegistroRutas3 extends StatefulWidget {
@@ -121,6 +122,7 @@ class _RegistroRutas3State extends State<RegistroRutas3> {
                           style: TextStyle(fontSize: 18),
                         ),
                         onPressed: () {
+                          Navigator.pushReplacementNamed(context, Routes.Transportista);
                         },
                         style: ElevatedButton.styleFrom(
                             primary: ColorSelect.tema,

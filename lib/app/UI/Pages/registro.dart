@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/service/register_service.dart';
 
 import 'colors/colors.dart';
@@ -246,7 +247,7 @@ class _RegistroState extends State<Registro> {
                         }
                         register(userType!, name!, email!, username!, password!).then((value) {
                           if (value['status'] == 'success') {
-                            Navigator.pushReplacementNamed(context, 'login');
+                            Navigator.pushReplacementNamed(context, Routes.Login);
                           }
                         });
                         // print('usertype:' + userType.toString());
