@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/app/UI/Pages/colors/colors.dart';
 
 import '../widgets/drawer.dart';
@@ -42,7 +43,7 @@ class transportista extends StatelessWidget {
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, 'map1');
+                        Navigator.pushReplacementNamed(context, Routes.Map1);
                       },
                       style: ElevatedButton.styleFrom(
                           primary: ColorSelect.tema,
@@ -67,7 +68,7 @@ class transportista extends StatelessWidget {
                         style: TextStyle(fontSize: 18),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, 'registroT');
+                        Navigator.pushReplacementNamed(context, Routes.RegistroT);
                       },
                       style: ElevatedButton.styleFrom(
                           primary: const Color(0XFF09BAA6),
