@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Info Ruta v1',
+      title: 'Info Ruta ',
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.Splash,
       routes: appRoutes()

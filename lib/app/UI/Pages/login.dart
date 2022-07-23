@@ -145,11 +145,11 @@ class _LoginPageState extends State<LoginPage> {
                                   if(value['userType'] == 1){
                                     // print('entra a transportista');
                                     Navigator.pushReplacementNamed(
-                                      context, 'transportista');
+                                      context, Routes.Transportista);
                                   }else{
                                     // print('entra a pasajero');
                                     Navigator.pushReplacementNamed(
-                                      context, 'home');
+                                      context, Routes.Home);
                                   }
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
