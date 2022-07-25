@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Info Ruta ',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.Splash,
+      initialRoute: Routes.Home,
       routes: appRoutes()
       // {
       // 'request': (BuildContext context) =>  RequestPermissionPage(),
