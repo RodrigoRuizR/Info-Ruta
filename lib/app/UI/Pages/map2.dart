@@ -45,7 +45,7 @@ class EndPoint extends StatelessWidget {
               builder: (_, controller, __ )=> GoogleMap(
               onTap: controller.onTap ,
               markers: controller.markers,
-              initialCameraPosition: controller.initialCameraPosition,
+              initialCameraPosition: CameraPosition(target: LatLng(16.6180951,-93.0927738) ),
               
               ),
               )

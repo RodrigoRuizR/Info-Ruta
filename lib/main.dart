@@ -11,11 +11,12 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Info Ruta ',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.Home,
+      initialRoute: Routes.Splash,
       routes: appRoutes()
       // {
       // 'request': (BuildContext context) =>  RequestPermissionPage(),
@@ -31,4 +32,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
 

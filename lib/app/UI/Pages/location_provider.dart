@@ -6,7 +6,7 @@ class LocationProvider {
   bool _serviceEnabled = false;
   PermissionStatus _permissionGranted = PermissionStatus.granted;
   LocationData locationData = LocationData.fromMap({});
-  
+
   void getLocation() async {
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {

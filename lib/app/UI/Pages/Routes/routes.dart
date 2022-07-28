@@ -1,4 +1,6 @@
 
+import 'package:integrador/app/UI/Pages/home_page.dart';
+
 abstract class Routes{
   // ignore: constant_identifier_names
   static const Splash = '/';
@@ -20,5 +22,12 @@ abstract class Routes{
   static const Map2 = '/map2';
   // ignore: constant_identifier_names
   static const RegistroR3 = '/registroR3';
+    // ignore: constant_identifier_names
+  static const Infomap = '/infoMap';
+    // ignore: constant_identifier_names
+  static const Poly ='/poli';
+    // ignore: constant_identifier_names
+  static const Search ='/buscar';
+
 
 }
