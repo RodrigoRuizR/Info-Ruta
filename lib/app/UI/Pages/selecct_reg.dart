@@ -31,7 +31,7 @@ class transportista extends StatelessWidget {
             children:[
               Container(  
                 //width: double.infinity,
-                height: size.height * 0.435,
+                height: size.height * 0.424,
                 color: const Color(0XFF09BAA6),
                 child: Center(
                   child: (SizedBox(
@@ -56,7 +56,7 @@ class transportista extends StatelessWidget {
               ),
               Container(
                 //width: double.infinity,
-                height: size.height * 0.436,
+                height: size.height * 0.424,
                 color: ColorSelect.tema,
                 child: Center(
                   child: (SizedBox(

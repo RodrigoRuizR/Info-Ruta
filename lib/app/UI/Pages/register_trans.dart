@@ -19,7 +19,7 @@ class _RegistroTransportesState extends State<RegistroTransportes> {
   String? company = '';
   String? phone = '';
   String? numberRoute = '';
-  int? route_id = 0;
+  String? route_id = '';
 
   
   @override
@@ -158,7 +158,7 @@ class _RegistroTransportesState extends State<RegistroTransportes> {
                   hintText: '#',
                 ),
                 onChanged: (text) {
-                  route_id = text as int?;
+                  route_id = text;
                 },
               ),
             ),

@@ -34,17 +34,18 @@ class EndPoint extends StatelessWidget {
             ),
             const Padding(padding: EdgeInsets.only(top: 20)),
             SizedBox(
-                height: 200,
+                height: 150,
                 child: Image.asset('lib/app/assets/images/mapicon.jpg'),
               ),
+            const Padding(padding: EdgeInsets.only(top: 20)),  
             SizedBox(
             width: 400,
-            height: 400,
+            height: size.height *.44,
             child: Consumer<HomeController>(
               builder: (_, controller, __ )=> GoogleMap(
               onTap: controller.onTap ,
               markers: controller.markers,
-              initialCameraPosition: controller.initialCameraPosition,
+              initialCameraPosition: CameraPosition(target: LatLng(16.6180951,-93.0927738) ),
               
               ),
               )

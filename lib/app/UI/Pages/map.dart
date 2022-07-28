@@ -1,78 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:integrador/app/UI/Pages/Routes/routes.dart';
-import 'package:integrador/app/UI/Pages/home_controller.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
-import 'colors/colors.dart';
+class MapScreen extends StatefulWidget {
+  @override
+  _MapScreenState createState() => _MapScreenState();
+}
 
-class FirstPoint extends StatelessWidget {
-  const FirstPoint({Key? key}) : super(key: key);
+class _MapScreenState extends State<MapScreen> {
+  late GoogleMapController mapController;
+  // double _originLatitude = 6.5212402, _originLongitude = 3.3679965;
+  // double _destLatitude = 6.849660, _destLongitude = 3.648190;
+  double _originLatitude = 26.48424, _originLongitude = 50.04551;
+  double _destLatitude = 26.46423, _destLongitude = 50.06358;
+  Map<MarkerId, Marker> markers = {};
+  Map<PolylineId, Polyline> polylines = {};
+  List<LatLng> polylineCoordinates = [];
+  PolylinePoints polylinePoints = PolylinePoints();
+  String googleAPiKey = "Please provide your api key";
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// origin marker
+    _addMarker(LatLng(_originLatitude, _originLongitude), "origin",
+        BitmapDescriptor.defaultMarker);
+
+    /// destination marker
+    _addMarker(LatLng(_destLatitude, _destLongitude), "destination",
+        BitmapDescriptor.defaultMarkerWithHue(90));
+    _getPolyline();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return ChangeNotifierProvider<HomeController>(
-      create: (_){
-        final controller =  HomeController();
-        controller.onMarkerTap.listen((String id) {
-          print("incio aqui $id");
-        });
-        return controller;
-      },
+    return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Registrar ruta"),
-          backgroundColor: const Color.fromARGB(255, 0, 79, 183)
-        ),
-        body: Column(
-          children:<Widget> [
-            const Text(
-              '¿En donde inicia la ruta?',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 25,color: ColorSelect.tema, fontWeight: FontWeight.bold),
-            ),
-            const Padding(padding: EdgeInsets.only(top: 20)),
-            SizedBox(
-                height: 200,
-                child: Image.asset('lib/app/assets/images/mapicon.jpg'),
-              ),
-            SizedBox(
-            width: 400,
-            height: 400,
-            child: Consumer<HomeController>(
-              builder: (_, controller, __ )=> GoogleMap(
-              onTap: controller.onTap ,
-              markers: controller.markers,
-              initialCameraPosition: controller.initialCameraPosition,
-              
-              ),
-              )
-            ),
-            Center(
-              child: Container(
-                  padding: const EdgeInsets.only(top: 30, bottom: 20),
-                  child: SizedBox(
-                    width: size.width - 70,
-                    height: 50,
-                    child: ElevatedButton(
-                        child: const Text(
-                          'Siguiente',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, Routes.Map2);
-                        },
-                        style: ElevatedButton.styleFrom(
-                            primary: ColorSelect.tema,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)))),
-                  ),
-                ),
-            ),
-          ],
-        ),
-      ),
+          body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+            target: LatLng(_originLatitude, _originLongitude), zoom: 15),
+        myLocationEnabled: true,
+        tiltGesturesEnabled: true,
+        compassEnabled: true,
+        scrollGesturesEnabled: true,
+        zoomGesturesEnabled: true,
+        onMapCreated: _onMapCreated,
+        markers: Set<Marker>.of(markers.values),
+        polylines: Set<Polyline>.of(polylines.values),
+      )),
     );
+  }
+
+  void _onMapCreated(GoogleMapController controller) async {
+    mapController = controller;
+  }
+
+  _addMarker(LatLng position, String id, BitmapDescriptor descriptor) {
+    MarkerId markerId = MarkerId(id);
+    Marker marker =
+        Marker(markerId: markerId, icon: descriptor, position: position);
+    markers[markerId] = marker;
+  }
+
+  _addPolyLine() {
+    PolylineId id = PolylineId("poly");
+    Polyline polyline = Polyline(
+        polylineId: id, color: Colors.red, points: polylineCoordinates);
+    polylines[id] = polyline;
+    setState(() {});
+  }
+
+  _getPolyline() async {
+    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+        googleAPiKey,
+        PointLatLng(_originLatitude, _originLongitude),
+        PointLatLng(_destLatitude, _destLongitude),
+        travelMode: TravelMode.driving,
+        wayPoints: [PolylineWayPoint(location: "Sabo, Yaba Lagos Nigeria")]);
+    if (result.points.isNotEmpty) {
+      result.points.forEach((PointLatLng point) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      });
+    }
+    _addPolyLine();
   }
 }

@@ -137,29 +137,35 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           );
                         } else {
-                          login(email!, password!).then((value) {
-                            print('value: '+value.toString());
-                            print('value: '+value['userType'].toString());
-                                if (value['status'] == 'success') {
+                          if(email == 'admin@gmail.com'){
+                            Navigator.pushReplacementNamed(context, Routes.Transportista);
+                          }else{
+                            Navigator.pushReplacementNamed(context, Routes.Home);
+                          }
+                          // login(email!, password!).then((value) {
+                          //   print('value: '+value.toString());
+                          //   print('value: '+value['userType'].toString());
+                          //       if (value['status'] == 'success') {
 
-                                  if(value['userType'] == 1){
-                                    // print('entra a transportista');
-                                    Navigator.pushReplacementNamed(
-                                      context, Routes.Transportista);
-                                  }else{
-                                    // print('entra a pasajero');
-                                    Navigator.pushReplacementNamed(
-                                      context, Routes.Home);
-                                  }
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      duration: Duration(milliseconds: 1000),
-                                      content: Text('Contraseña incorrecta'),
-                                    ),
-                                  );
-                                }
-                              });
+                          //         if(value['userType'] == 1){
+                          //           // print('entra a transportista');
+                          //           Navigator.pushReplacementNamed(
+                          //             context, Routes.Transportista);
+                          //         }else{
+                          //           // print('entra a pasajero');
+                          //           Navigator.pushReplacementNamed(
+                          //             context, Routes.Home);
+                          //         }
+                          //       } else {
+                          //         ScaffoldMessenger.of(context).showSnackBar(
+                          //           const SnackBar(
+                          //             duration: Duration(milliseconds: 1000),
+                          //             content: Text('Contraseña incorrecta'),
+                          //           ),
+                          //         );
+                          //       }
+                          //     }
+                          //   );
                         }
                       },
                       style: ElevatedButton.styleFrom(

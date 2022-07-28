@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -7,21 +8,37 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: const <Widget>[
+        
+        children: <Widget>[
+          
           UserAccountsDrawerHeader(
-              accountName: Text('Rodrigo Rodriguez Ruiz'),
-              accountEmail: Text('rod')),
+              
+              accountName: Text(
+                'Rodrigo Rodriguez Ruiz',
+                style: TextStyle(fontSize: 20,color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              
+              accountEmail: Text(' ')),
           ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
+            leading: Icon(Icons.auto_awesome_mosaic),
+            title: Text('Pagina principal'),
+            onTap: (){
+              Navigator.pushNamed(context, Routes.Home);
+            },
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
+            leading: Icon(Icons.star),
+            title: Text('Rutas'),
+            onTap: (){
+              Navigator.pushNamed(context, Routes.Poly);
+            },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
+            leading: Icon(Icons.logout),
+            title: Text('Salir'),
+            onTap: (){
+              Navigator.pushReplacementNamed(context, Routes.Login);
+            },
           ),
         ],
       ),

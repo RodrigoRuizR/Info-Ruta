@@ -212,7 +212,7 @@ class _RegistroState extends State<Registro> {
                   return DropdownMenuItem<String>(
                     child: Text(
                       value,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16,color: Colors.black, fontWeight: FontWeight.bold ),
                     ),
                     value: value,
                   );
@@ -239,19 +239,21 @@ class _RegistroState extends State<Registro> {
                             ),
                           );
                         } else {
-                          print('entra aqui todo lleno');
-                          if (_dropdownvalue == 'Pasajero') {
-                          userType = 2;
-                        } else {
-                          userType = 1;
-                        }
-                        register(userType!, name!, email!, username!, password!).then((value) {
-                          if (value['status'] == 'success') {
-                            Navigator.pushReplacementNamed(context, Routes.Login);
-                          }
-                        });
-                        // print('usertype:' + userType.toString());
-                        }
+                          Navigator.pushReplacementNamed(context, Routes.Login);
+                        //   print('entra aqui todo lleno');
+                        //   if (_dropdownvalue == 'Pasajero') {
+                        //   userType = 2;
+                        // } else {
+                        //   userType = 1;
+                        // }
+                        // register(userType!, name!, email!, username!, password!).then((value) {
+                        //   if (value['status'] == 'success') {
+                        //     Navigator.pushReplacementNamed(context, Routes.Login);
+                        //   }
+                        // });
+                        // // print('usertype:' + userType.toString());
+                        // }
+                      }
                       },
                       style: ElevatedButton.styleFrom(
                           primary: ColorSelect.tema,
