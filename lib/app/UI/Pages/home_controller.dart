@@ -8,6 +8,10 @@ import 'package:location/location.dart';
 
 class HomeController extends ChangeNotifier{
 
+
+  final List<double> puntosLat = [];
+  final List<double> puntosLon = [];
+
   final _location = LocationProvider();
 
   final Map<MarkerId, Marker> _markers = {};
@@ -65,32 +69,39 @@ class HomeController extends ChangeNotifier{
   
 
 
-  void onTap(LatLng position){
-    final id = _markers.length.toString();
-    final markerId = MarkerId(id);
+  // void onTap(LatLng position){
+  //   final id = _markers.length.toString();
+  //   final markerId = MarkerId(id);
     
-    final marker = Marker(
+  //   final marker = Marker(
       
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
-      markerId: markerId,
-      position: position,
-      anchor: const Offset(0.5,1),
-      onTap: (){
-        _markersController.sink.add(id);
-      },
-      draggable: true,
-      onDragEnd: (newPosition){
-        //print("el marcador se puso en las longitudes $newPosition");
-        print("latitud ");
-        print(newPosition);
-      },
+  //     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
+  //     markerId: markerId,
+  //     position: position,
+  //     anchor: const Offset(0.5,1),
+  //     onTap: (){
+  //       _markersController.sink.add(id);
+  //     },
+  //     draggable: true,
+  //     onDragEnd: (newPosition){
+  //       //print("el marcador se puso en las longitudes $newPosition");
+  //       // print("latitud ");
+  //       // print(newPosition);
+  //       // puntosLat.add(newPosition.latitude);
+  //       // puntosLon.add(newPosition.longitude);
+
+  //       // print("LONGITUD WEY DE: $puntosLat");
+  //       // print("LONGITUD WEY DE: $puntosLon");
+
+  //       //print(puntos);
+  //     },
 
 
-      );
+  //     );
 
-    _markers[markerId]=marker;
-    notifyListeners();
-  }
+  //   _markers[markerId]=marker;
+  //   notifyListeners();
+  // }
 
   @override
   void dispose() {

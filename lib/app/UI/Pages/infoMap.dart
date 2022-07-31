@@ -91,7 +91,7 @@ class InfoMap extends StatelessWidget {
                 width: size.width*0.93,
                 child: Consumer<HomeController>(
                   builder: (_, controller, __ )=> GoogleMap(
-                  onTap: controller.onTap ,
+                  //onTap: controller.onTap ,
                   markers: controller.markers,
                   initialCameraPosition: CameraPosition(target: LatLng(16.6180951,-93.0927738) ) ,
               

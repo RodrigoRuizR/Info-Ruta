@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'Routes/routes.dart';
 import 'colors/colors.dart';
+import 'home_controller.dart';
 
 class RegistroRutas3 extends StatefulWidget {
-  const RegistroRutas3({Key? key}) : super(key: key);
+  const RegistroRutas3( {Key? key}) : super(key: key);
 
   @override
   State<RegistroRutas3> createState() => _RegistroRutas3State();
@@ -24,6 +26,12 @@ class _RegistroRutas3State extends State<RegistroRutas3> {
   
   @override
   Widget build(BuildContext context) {
+
+    
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    LatLng posision1 = arguments['posi1'];
+    LatLng posision2 = arguments['posi2'];
+    
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -122,6 +130,13 @@ class _RegistroRutas3State extends State<RegistroRutas3> {
                           style: TextStyle(fontSize: 18),
                         ),
                         onPressed: () {
+                          print('AVR SI YA PASAN LAS POSISIONES');
+                          print(posision1);
+                          print('ese fue posi 1');
+                          print('AVR SI YA PASAN LAS POSISIONES x2');
+                          print(posision2);
+                          print('ese fue posi 2');
+
                           Navigator.pushReplacementNamed(context, Routes.Transportista);
                         },
                         style: ElevatedButton.styleFrom(

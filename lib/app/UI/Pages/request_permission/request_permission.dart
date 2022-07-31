@@ -23,7 +23,7 @@ class _RequestPermissionPageState extends State<RequestPermissionPage> {
     super.initState();
     _subscription = _controller.onStatusChanged.listen((status) { 
       if(status == PermissionStatus.granted){
-        Navigator.pushReplacementNamed(context, Routes.Home,);
+        Navigator.pushReplacementNamed(context, Routes.Login,);
       }
     },);
   }

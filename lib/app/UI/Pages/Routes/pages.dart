@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:integrador/app/UI/Pages/Routes/routes.dart';
 import 'package:integrador/app/UI/Pages/home_page.dart';
 import 'package:integrador/app/UI/Pages/infoMap.dart';
@@ -21,12 +22,12 @@ Map<String, Widget Function(BuildContext)> appRoutes(){
     Routes.Permission: (_)=> RequestPermissionPage(),
     Routes.Home:(_) => const HomePage(),
     Routes.Login:(_) => const LoginPage(),
-    // Routes.Map1:(_) => const FirstPoint(),
-    Routes.Map2:(_) => const EndPoint(),
+    Routes.Map1:(_) =>  FirstPoint(),
+    Routes.Map2:(_) =>  EndPoint(),
     Routes.Register:(_) => const Registro(),
     Routes.Transportista:(_) => const transportista(),
     Routes.RegistroT:(_) => const RegistroTransportes(),
-    Routes.RegistroR3:(_) => const RegistroRutas3(),
+    Routes.RegistroR3:(_) => RegistroRutas3(),
     Routes.Infomap:(_)=> const InfoMap(),
     Routes.Poly :(_)=> Poly(),
     Routes.Search:(_)=> buscar()
