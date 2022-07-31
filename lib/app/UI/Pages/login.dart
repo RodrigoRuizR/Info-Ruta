@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           );
                         } else {
-                          if(email == 'admin@gmail.com'){
+                          if(email == '1'){
                             Navigator.pushReplacementNamed(context, Routes.Transportista);
                           }else{
                             Navigator.pushReplacementNamed(context, Routes.Home);
